@@ -1,0 +1,12 @@
+// Basic reset and variable definition
+$primary-color: #007bff;
+$dark-bg: #2b2e38;
+$light-text: #f0f0f0;
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #1e1f24;
+    color: $light-text;
+}
+// * { box-sizing: border-box; }

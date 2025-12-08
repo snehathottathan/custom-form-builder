@@ -1,0 +1,79 @@
+@import "../../globals.scss";
+.builderGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: calc(100vh - 51px); // 51px is header height
+    
+    .configPanel {
+        background-color: $dark-bg;
+        padding: 20px;
+        overflow-y: auto;
+        border-right: 1px solid #333;
+    }
+    
+    .previewPanel {
+        background-color: #24262d;
+        padding: 20px;
+        overflow-y: auto;
+        
+        h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+    }
+
+    .formContainer {
+        padding: 15px;
+        background-color: #383b47;
+        border-radius: 8px;
+    }
+}
+
+// FieldWrapper (DnD items)
+.fieldWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #383b47;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    &:hover { background-color: #4c505f; }
+
+    &.selected {
+        border-color: $primary-color;
+        background-color: #3b4255;
+    }
+    
+    .dragHandle {
+        cursor: grab;
+        padding-right: 10px;
+        color: #888;
+    }
+    
+    .fieldInfo {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .fieldIcon {
+        font-size: 1.2em;
+        margin-right: 10px;
+    }
+
+    .removeBtn {
+        z-index: 12;
+        background: none;
+        color: #ff4d4d;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        pointer-events: auto;
+        padding: 5px;
+    }
+}

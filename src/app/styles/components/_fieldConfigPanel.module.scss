@@ -1,0 +1,104 @@
+@import "../../globals.scss";
+
+.panel {
+    background-color: #383b47;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    
+    h3 {
+        color: $primary-color;
+        border-bottom: 2px solid #555;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+    
+    h4 {
+        margin-top: 0;
+        color: $light-text;
+    }
+
+    .fieldId {
+        font-size: 0.8em;
+        color: #888;
+        margin-bottom: 15px;
+    }
+
+    .section {
+        border-bottom: 1px dashed #555;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .configItem, .toggleItem {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        
+        label {
+            font-size: 0.9em;
+            margin-bottom: 4px;
+            color: $light-text;
+        }
+    }
+    
+    .input, .select {
+        padding: 8px;
+        border: 1px solid #555;
+        background-color: #2b2e38;
+        color: $light-text;
+        border-radius: 4px;
+    }
+    
+    .toggleItem {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+    }
+
+    .conditionalGroup {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        
+        .configItem {
+            margin-bottom: 0;
+        }
+        
+        // Ensure inputs within the grid take up the full column width
+        .input, .select {
+            width: 100%;
+        }
+    }
+
+    .rulePrompt {
+        font-weight: bold;
+        color: #ccc;
+        margin-top: 15px;
+    }
+
+    .deleteButton {
+        width: 100%;
+        padding: 10px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.2s;
+        
+        &:hover {
+            background-color: darken(#dc3545, 10%);
+        }
+    }
+    
+    .noSelection, .noSource {
+        color: #aaa;
+        font-style: italic;
+        padding: 10px;
+        background-color: #4c505f;
+        border-radius: 4px;
+    }
+}

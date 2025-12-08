@@ -5,29 +5,70 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
+yarn install
 yarn dev
 # or
+pnpm install
 pnpm dev
 # or
+bun install
 bun dev
+
 ```
+Open http://localhost:3000 in your browser. The page will auto-update as you edit files.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+app/ – Next.js App Router pages and components.
 
-## Learn More
+components/ – React components for the form builder, including:
 
-To learn more about Next.js, take a look at the following resources:
+FieldWrapper – Wraps each form field with drag-and-drop and remove functionality.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+SortableFieldItem – Handles sortable behavior for fields.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+FieldToolbar, FieldConfigPanel, LivePreview – UI panels for editing and previewing forms.
+
+redux/ – Redux slices and store for managing form builder state.
+
+hooks/ – Custom hooks, e.g., useLocalStorage for saving forms.
+
+styles/ – SCSS modules for styling the builder UI.
+
+## Features
+
+Drag-and-drop form fields to reorder dynamically using @dnd-kit.
+
+Select a field to configure its label, type, and options.
+
+Lazy-loading of complex components for performance.
+
+Preview form live as you build it.
+
+Persist form schema in local storage.
+
+Remove fields with confirmation prompts.
+
+## Technologies used
+
+Next.js
+ – React framework for production.
+
+React Redux
+ – State management.
+
+@dnd-kit
+ – Drag-and-drop functionality.
+
+SCSS Modules
+ – Component-level styling.
+
+React Lazy + Suspense
+ – Code splitting for performance.
 
 ## Deploy on Vercel
 

@@ -1,0 +1,92 @@
+@import "../../globals.scss";
+
+.livePreviewForm {
+    // Form padding is applied by the parent MainBuilder component
+    
+    .formGroup {
+        margin-bottom: 20px;
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .requiredMark {
+            color: #dc3545;
+        }
+    }
+    
+    .input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #555;
+        background-color: #2b2e38;
+        color: $light-text;
+        border-radius: 4px;
+        transition: border-color 0.2s;
+        
+        &:focus {
+            border-color: $primary-color;
+            outline: none;
+        }
+
+        &.error {
+            border-color: #dc3545;
+        }
+
+        &:disabled {
+            background-color: #444;
+            color: #999;
+            cursor: not-allowed;
+        }
+    }
+    
+    .errorMessage {
+        color: #ff4d4d;
+        font-size: 0.8em;
+        margin-top: 5px;
+    }
+
+    .complexPlaceholder {
+        padding: 10px;
+        border: 1px dashed #777;
+        color: #aaa;
+        background-color: #383b47;
+        text-align: center;
+        border-radius: 4px;
+    }
+    
+    .disabled {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 12px;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover:not(:disabled) {
+            background-color: darken($primary-color, 10%);
+        }
+
+        &:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+    }
+    
+    .disabledWarning {
+        text-align: center;
+        color: #ffc107;
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+}

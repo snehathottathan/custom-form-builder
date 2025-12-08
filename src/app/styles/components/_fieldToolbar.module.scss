@@ -1,0 +1,38 @@
+@import "../../globals.scss";
+
+.toolbar {
+    padding: 15px;
+    background-color: #383b47;
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    h3 {
+        margin-top: 0;
+        color: #fff;
+        border-bottom: 1px solid #555;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .buttonGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+    }
+
+    .fieldButton {
+        padding: 10px 5px;
+        background-color: #555a6d;
+        color: white;
+        border: 1px solid #444;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-size: 0.9em;
+
+        &:hover {
+            background-color: $primary-color;
+            border-color: $primary-color;
+        }
+    }
+}
