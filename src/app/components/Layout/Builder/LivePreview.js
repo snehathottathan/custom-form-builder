@@ -29,13 +29,69 @@ const LivePreview = ({ fields }) => {
     }, []);
 
     // Placeholder for real validation logic (Min/Max/Regex)
-    const runValidation = useCallback((field, value) => {
-        if (field.required && !value) {
-            return 'This field is required.';
-        }
-        // ... Add logic for field.validation.min / max / regex here
+   // src/components/Builder/LivePreview.js
+
+// ... (imports and useState/useCallback definitions) ...
+
+const runValidation = useCallback((field, value) => {
+    const { validation, required, type } = field;
+    
+    // Ensure value is treated as a string for length checks
+    const stringValue = String(value || '');
+    const length = stringValue.length;
+
+    // --- 1. Required Check ---
+    // Checks for empty string value (handles all types, including unchecked boxes if value is 'false')
+    if (required && stringValue === '') {
+        return validation.error || 'This field is required.';
+    }
+
+    // If the field is empty and not required, pass validation for further checks.
+    if (stringValue === '') {
         return null; 
-    }, []);
+    }
+    
+    // --- 2. Length Check (Applies to Text, Email, and Number types) ---
+    if (['text', 'email', 'number'].includes(type)) {
+        
+        const minLength = Number(validation.min);
+        const maxLength = Number(validation.max);
+        
+        // Check Minimum Length/Digits
+        if (validation.min && length < minLength) {
+            const unit = type === 'number' ? 'digits' : 'characters';
+            return validation.error || `Must have at least ${validation.min} ${unit}.`;
+        }
+        
+        // Check Maximum Length/Digits
+        if (validation.max && length > maxLength) {
+            const unit = type === 'number' ? 'digits' : 'characters';
+            return validation.error || `Cannot exceed ${validation.max} ${unit}.`;
+        }
+    }
+    
+    // --- 3. Numeric Value Check (Optional, for true numerical constraints like age/currency) ---
+    // If it's a number field and you want to ensure it's a valid number:
+    if (type === 'number' && isNaN(Number(stringValue))) {
+        return validation.error || 'Must be a valid number.';
+    }
+
+    // --- 4. Regex Check (Applies to Text and Email) ---
+    if (validation.regex && ['text', 'email'].includes(type)) {
+        try {
+            const regexClean = validation.regex.replace(/^\/|\/$/g, '');
+            const regex = new RegExp(regexClean);
+            if (!regex.test(stringValue)) {
+                return validation.error || 'The entered value does not match the required format.';
+            }
+        } catch (e) {
+            console.error("Invalid Regex Pattern:", validation.regex, e);
+            return 'Invalid validation rule applied.';
+        }
+    }
+
+    return null; // Validation passed
+}, []);
 
     // Optimization 3: useMemo to determine if the Submit button should be disabled
     const isSubmitDisabled = useMemo(() => {
