@@ -7,16 +7,16 @@ import { removeField } from '../../../redux/formBuilderSlice';
 
 // Icons for field types (Text, Email, etc.) - Placeholder
 const FieldIcon = ({ type }) => {
-    const iconMap = {
-        text: 'A', email: '@', number: '#', date: <i className="bi bi-calendar-check-fill"></i>, 
-        checkbox: <i className="bi bi-check2"></i>, radio: <i className="bi bi-ui-radios"></i>, dropdown: '▼' 
-    };
-    return <span className={styles.fieldIcon}>{iconMap[type] || '❓'}</span>;
+  const iconMap = {
+    text: 'A', email: '@', number: '#', date: <i className="bi bi-calendar-check-fill"></i>,
+    checkbox: <i className="bi bi-check2"></i>, radio: <i className="bi bi-ui-radios"></i>, dropdown: '▼'
+  };
+  return <span className={styles.fieldIcon}>{iconMap[type] || <i class="bi bi-question"></i>}</span>;
 };
 
 const FieldWrapper = ({ field, onClick, isSelected }) => {
   const dispatch = useDispatch();
-  
+
   // DnD-kit hook to make the component sortable
   const {
     attributes,
@@ -37,7 +37,7 @@ const FieldWrapper = ({ field, onClick, isSelected }) => {
   const handleRemove = (e) => {
     e.stopPropagation(); // Prevents selection when removing
     if (window.confirm(`Are you sure you want to remove the field: "${field.label}"?`)) {
-        dispatch(removeField(field.id));
+      dispatch(removeField(field.id));
     }
   };
 
@@ -56,7 +56,9 @@ const FieldWrapper = ({ field, onClick, isSelected }) => {
         <FieldIcon type={field.type} />
         <span className={styles.fieldLabel}>{field.label}</span>
       </div>
-      <button className={styles.removeBtn} onClick={handleRemove} title="Remove field">
+      <button className={styles.removeBtn} onPointerDown={(e) => e.stopPropagation()}
+        onClick={handleRemove}
+        title="Remove field">
         X
       </button>
     </div>

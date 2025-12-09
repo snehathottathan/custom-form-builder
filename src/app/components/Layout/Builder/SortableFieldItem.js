@@ -1,5 +1,5 @@
 import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { CSS as DndCSS } from "@dnd-kit/utilities";
 import React from "react";
 
 export default function SortableFieldItem({ field, children }) {
@@ -7,19 +7,15 @@ export default function SortableFieldItem({ field, children }) {
     useSortable({ id: field.id });
 
   const style = {
-    transform: CSS.Transform.toString(transform),
+    transform: transform ? DndCSS.Transform.toString(transform) : undefined,
     transition,
   };
 
-  // Pass sortable props down to the child (FieldWrapper)
-  const childWithProps = React.cloneElement(children, {
-    sortableListeners: listeners,
-    sortableAttributes: attributes,
-  });
-
   return (
     <div ref={setNodeRef} style={style}>
-      {childWithProps}
+      {typeof children === "function"
+        ? children({ attributes, listeners })
+        : children}
     </div>
   );
 }

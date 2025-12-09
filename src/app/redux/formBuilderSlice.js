@@ -29,12 +29,17 @@ const formBuilderSlice = createSlice({
   name: 'formBuilder',
   initialState,
   reducers: {
-    addField: (state, action) => {
-      const type = action.payload;
-      const newField = createNewField(type);
-      state.fields.push(newField);
-      state.selectedFieldId = newField.id; // Auto-select new field
-    },
+   addField: (state, action) => {
+  const type = action.payload;
+  const newField = createNewField(type);
+
+  // Prevent adding if label is empty (optional)
+  if (!newField.label || newField.label.trim() === "") return;
+
+  state.fields.push(newField);
+  state.selectedFieldId = newField.id; // Auto-select new field
+},
+
     removeField: (state, action) => {
       state.fields = state.fields.filter(field => field.id !== action.payload);
       if (state.selectedFieldId === action.payload) {
