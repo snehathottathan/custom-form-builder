@@ -5,17 +5,19 @@
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
-    
+
     h3 {
         color: $primary-color;
         border-bottom: 2px solid #555;
         padding-bottom: 5px;
         margin-bottom: 15px;
+        font-size: 1.4em;
     }
-    
+
     h4 {
         margin-top: 0;
         color: $light-text;
+        font-size: 1.1em;
     }
 
     .fieldId {
@@ -30,26 +32,28 @@
         margin-bottom: 20px;
     }
 
-    .configItem, .toggleItem {
+    .configItem,
+    .toggleItem {
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
-        
+
         label {
             font-size: 0.9em;
             margin-bottom: 4px;
             color: $light-text;
         }
     }
-    
-    .input, .select {
+
+    .input,
+    .select {
         padding: 8px;
         border: 1px solid #555;
         background-color: #2b2e38;
         color: $light-text;
         border-radius: 4px;
     }
-    
+
     .toggleItem {
         flex-direction: row;
         justify-content: space-between;
@@ -61,13 +65,13 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 10px;
-        
+
         .configItem {
             margin-bottom: 0;
         }
-        
-        // Ensure inputs within the grid take up the full column width
-        .input, .select {
+
+        .input,
+        .select {
             width: 100%;
         }
     }
@@ -88,17 +92,95 @@
         cursor: pointer;
         margin-top: 20px;
         transition: background-color 0.2s;
-        
+
         &:hover {
             background-color: darken(#dc3545, 10%);
         }
     }
-    
-    .noSelection, .noSource {
+
+    .noSelection,
+    .noSource {
         color: #aaa;
         font-style: italic;
         padding: 10px;
         background-color: #4c505f;
         border-radius: 4px;
+    }
+}
+
+// ================== RESPONSIVE ==================
+@media (max-width: 1024px) {
+    .panel {
+        padding: 12px;
+
+        .conditionalGroup {
+            grid-template-columns: 1fr 1fr; // Two columns on tablets
+            gap: 8px;
+        }
+
+        h3 {
+            font-size: 1.3em;
+        }
+
+        h4 {
+            font-size: 1em;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .panel {
+        padding: 10px;
+        margin-top: 15px;
+
+        .conditionalGroup {
+            grid-template-columns: 1fr; // Single column on mobile
+        }
+
+        .configItem,
+        .toggleItem {
+            flex-direction: column;
+        }
+
+        .deleteButton {
+            padding: 8px;
+            font-size: 0.9em;
+        }
+
+        .input,
+        .select {
+            padding: 6px;
+        }
+
+        .noSelection,
+        .noSource {
+            padding: 8px;
+            font-size: 0.85em;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .panel {
+        padding: 8px;
+        margin-top: 10px;
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        h4 {
+            font-size: 0.95em;
+        }
+
+        .input,
+        .select {
+            padding: 5px;
+            font-size: 0.85em;
+        }
+
+        .deleteButton {
+            padding: 6px;
+        }
     }
 }

@@ -36,3 +36,20 @@
         }
     }
 }
+
+// ====== RESPONSIVE ======
+@media (max-width: 768px) {
+    .toolbar {
+        padding: 10px;
+    }
+
+    .buttonGrid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 5px;
+    }
+
+    .fieldButton {
+        font-size: 0.8em;
+        padding: 8px 5px;
+    }
+}

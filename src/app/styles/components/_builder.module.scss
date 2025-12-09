@@ -1,16 +1,18 @@
 @import "../../globals.scss";
+
 .builderGrid {
     display: grid;
     grid-template-columns: 1fr 2fr;
     height: calc(100vh - 51px); // 51px is header height
-    
+    gap: 15px;
+
     .configPanel {
         background-color: $dark-bg;
         padding: 20px;
         overflow-y: auto;
         border-right: 1px solid #333;
     }
-    
+
     .previewPanel {
         background-color: #24262d;
         padding: 20px;
@@ -48,17 +50,18 @@
         border-color: $primary-color;
         background-color: #3b4255;
     }
-    
+
     .dragHandle {
         cursor: grab;
         padding-right: 10px;
         color: #888;
     }
-    
+
     .fieldInfo {
         flex-grow: 1;
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
     }
 
     .fieldIcon {
@@ -75,5 +78,49 @@
         font-weight: bold;
         pointer-events: auto;
         padding: 5px;
+    }
+}
+
+// ====== RESPONSIVE ======
+@media (max-width: 1024px) {
+    .builderGrid {
+        grid-template-columns: 1fr; // Single column
+        height: auto;
+
+        .configPanel {
+            border-right: none;
+            border-bottom: 1px solid #333;
+        }
+
+        .previewPanel {
+            margin-top: 15px;
+        }
+    }
+
+    .fieldWrapper {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .dragHandle {
+            margin-bottom: 8px;
+        }
+
+        .removeBtn {
+            align-self: flex-end;
+            margin-top: 8px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .builderGrid {
+        padding: 10px;
+    }
+ .fieldWrapper {
+        flex-direction: row;
+}
+    .configPanel,
+    .previewPanel {
+        padding: 10px;
     }
 }
