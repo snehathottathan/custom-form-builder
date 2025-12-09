@@ -140,3 +140,45 @@ $primary-color: #007bff; // Assuming a standard primary color or define your cus
         text-align: center;
     }
 }
+
+// src/styles/components/_livePreview.module.scss
+
+// ... (existing styles) ...
+
+.disabledWarning {
+    text-align: left; /* Change from center for better list display */
+    color: #ffc107;
+    background-color: #383b47;
+    border: 1px solid #ffc107;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+    
+    p {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    
+    .errorList {
+        list-style-type: disc;
+        list-style-position: inside;
+        margin: 0;
+        padding-left: 15px;
+        
+        li {
+            font-size: 0.9em;
+            margin-bottom: 3px;
+            color: white; /* Make the list items white for better contrast */
+        }
+    }
+}
+
+.submitButton{
+     background-color: $primary-color;
+     width: 100%;
+     padding: 10px;
+     border: 0px;
+    border-radius: 4px;
+    color: white;
+}
