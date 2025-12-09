@@ -8,8 +8,8 @@ import { removeField } from '../../../redux/formBuilderSlice';
 // Icons for field types (Text, Email, etc.) - Placeholder
 const FieldIcon = ({ type }) => {
     const iconMap = {
-        text: 'A', email: '@', number: '#', date: '🗓️', 
-        checkbox: '☑️', radio: '🔘', dropdown: '▼' 
+        text: 'A', email: '@', number: '#', date: <i className="bi bi-calendar-check-fill"></i>, 
+        checkbox: <i className="bi bi-check2"></i>, radio: <i className="bi bi-ui-radios"></i>, dropdown: '▼' 
     };
     return <span className={styles.fieldIcon}>{iconMap[type] || '❓'}</span>;
 };

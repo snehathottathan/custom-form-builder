@@ -6,7 +6,7 @@ const createNewField = (type) => ({
   id: `field-${nextId++}`,
   type, // text, email, number, date, checkbox, radio, dropdown
   label: type.charAt(0).toUpperCase() + type.slice(1) + ' Field',
-  placeholder: 'Start typing or panic',
+  placeholder: 'Start typing',
   required: false,
   validation: {
     min: '',

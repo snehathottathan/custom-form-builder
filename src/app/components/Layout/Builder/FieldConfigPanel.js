@@ -54,6 +54,8 @@ const FieldConfigPanel = ({ field, allFields }) => {
 
     // Optimization 4: useMemo for fields available for conditional logic source
     const conditionalSourceFields = useMemo(() => {
+        console.log("field",field);
+        
         return allFields.filter(f => f.id !== field.id && f.type !== 'date' && f.type !== 'number');
     }, [allFields, field.id]);
     
@@ -79,7 +81,7 @@ const FieldConfigPanel = ({ field, allFields }) => {
 
     return (
         <div className={styles.panel}>
-            <h3>⚙️ Configure: {field.type.toUpperCase()} Field</h3>
+            <h3><i className="bi bi-gear"></i>Configure: {field.type.toUpperCase()} Field</h3>
             <p className={styles.fieldId}>ID: {field.id}</p>
             
             {/* --- 1. Basic Properties --- */}
@@ -97,11 +99,11 @@ const FieldConfigPanel = ({ field, allFields }) => {
                     name="placeholder"
                     value={field.placeholder}
                     onChange={handlePropertyChange}
-                    placeholder="Start typing or panic"
+                    placeholder="Start typing"
                 />
                 
                 <div className={styles.toggleItem}>
-                    <label>Required Field (Boss said so)</label>
+                    <label>Required Field</label>
                     <input 
                         type="checkbox" 
                         checked={field.required}

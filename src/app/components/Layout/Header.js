@@ -20,9 +20,9 @@ const Header = ({ exportSchema }) => {
   return (
     <header className={styles.header}>
       <div className={styles.buttonGroup}>
-        <button className={styles.btn} onClick={() => alert("Auto-saved to LocalStorage!")}>💾 Save</button>
-        <button className={styles.btn} onClick={() => alert("Auto-loaded on startup!")}>⬇️ Load</button>
-        <button className={styles.btn} onClick={handleReset}>🔄 Reset</button>
+        <button className={styles.btn} onClick={() => alert("Auto-saved to LocalStorage!")}><i className="bi bi-floppy2"></i> Save</button>
+        <button className={styles.btn} onClick={() => alert("Auto-loaded on startup!")}><i className="bi bi-download"></i> Load</button>
+        <button className={styles.btn} onClick={handleReset}><i className="bi bi-arrow-repeat"></i> Reset</button>
       </div>
       <h1>Form Builder</h1>
       <button className={`${styles.btn} ${styles.export}`} onClick={exportSchema}>Export JSON</button>
