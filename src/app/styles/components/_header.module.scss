@@ -1,53 +1,85 @@
 @import "../../globals.scss";
-
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px; // Original padding
     background-color: #1a1c22;
     border-bottom: 1px solid #333;
-
+    
     .buttonGroup {
         display: flex;
         gap: 10px;
-        flex-wrap: wrap;
     }
+      .h1-class{
+
+            font-size: 20px;
+        }
 
     .btn {
-        padding: 8px 15px;
+       padding: 8px 15px;
         background-color: $primary-color;
         color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.2s;
-
         &:hover { background-color: darken($primary-color, 10%); }
-    }
-
-    .export {
-        background-color: #28a745;
-
-        &:hover { background-color: #1e7e34; }
     }
 }
 
-// ====== RESPONSIVE ======
-@media (max-width: 768px) {
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
     .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 10px;
+        padding: 10px; // Reduced horizontal padding
     }
-
     .buttonGroup {
-        width: 100%;
-        justify-content: flex-start;
+        gap: 5px; // Reduced gap between buttons
+    }
+     .h1-class{
+
+            font-size: 14px;
+        }
+       
+    .btn {
+        padding: 6px 10px; // Smaller buttons
+        font-size: 0.9em;
+       
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        &:hover { background-color: darken($primary-color, 10%); }
     }
 
-    .btn {
-        width: 100%;
+   
+    // Consider stacking if content gets too wide
+    @media (max-width: 400px) {
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .buttonGroup {
+            margin-top: 5px;
+            width: 100%;
+            justify-content: space-around; // Distribute buttons horizontally
+        }
+        .btn {
+            flex-grow: 1; // Make buttons take equal space
+             background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        &:hover { background-color: darken($primary-color, 10%); }
+        }
+        .h1-class{
+
+            font-size: 14px;
+        }
+       
     }
 }

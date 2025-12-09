@@ -1,47 +1,184 @@
-@import "../../globals.scss";
+@import "../../globals.scss";// Ensure this path is correct based on your setup
 
-.livePreviewContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+$panel-bg: #2b2e38; // Darker background for contrast
+$section-border: #444;
+$input-bg: #383b47; // Lighter background for inputs
+$primary-color: #007bff; // Assuming a standard primary color or define your custom one
 
 .panel {
-    padding: 15px;
-    background-color: #383b47;
-    border-radius: 8px;
+    background-color: $panel-bg;
+    padding: 20px;
+    border-radius: 12px; // Slightly more rounded corners
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); // Subtle shadow for depth
+    margin-top: 15px;
+    
+    h3 {
+        color: $primary-color;
+        font-size: 1.4em;
+        border-bottom: 2px solid $primary-color;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+
+        i { // Styling for the gear icon (if using FontAwesome or similar)
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+    }
+    
+    h4 {
+        margin-top: 0;
+        color: $light-text;
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        padding-top: 10px;
+    }
+
+    .fieldId {
+        font-size: 0.85em;
+        color: #888;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $section-border;
+        padding-bottom: 10px;
+    }
+
+    .section {
+        border-bottom: 1px dashed $section-border;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .configItem, .toggleItem {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        
+        label {
+            font-size: 0.95em;
+            margin-bottom: 6px;
+            color: $light-text;
+            font-weight: 600;
+        }
+    }
+    
+    .input, .select {
+        padding: 10px;
+        border: 1px solid $section-border;
+        background-color: $input-bg;
+        color: #fff;
+        border-radius: 6px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            border-color: $primary-color;
+            box-shadow: 0 0 5px rgba($primary-color, 0.5);
+            outline: none;
+        }
+    }
+    
+    .toggleItem {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 6px;
+        
+        label {
+            margin-bottom: 0;
+        }
+    }
+
+    .conditionalGroup {
+        display: flex;
+        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+    }
+
+    .rulePrompt {
+        font-weight: bold;
+        color: #ccc;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .deleteButton {
+        width: 100%;
+        padding: 12px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: background-color 0.2s, transform 0.1s;
+        font-weight: bold;
+        
+        &:hover {
+            background-color: darken(#dc3545, 10%);
+            transform: translateY(-1px);
+        }
+        &:active {
+            transform: translateY(0);
+        }
+    }
+    
+    .noSource {
+        color: #aaa;
+        font-style: italic;
+        padding: 15px;
+        background-color: #4c505f;
+        border-radius: 6px;
+        text-align: center;
+    }
 }
 
+// src/styles/components/_livePreview.module.scss
+
+// ... (existing styles) ...
+
 .disabledWarning {
-    text-align: left;
+    text-align: left; /* Change from center for better list display */
     color: #ffc107;
     background-color: #383b47;
     border: 1px solid #ffc107;
     padding: 15px;
     border-radius: 4px;
     margin-top: 10px;
+    
+    p {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    
+    .errorList {
+        list-style-type: disc;
+        list-style-position: inside;
+        margin: 0;
+        padding-left: 15px;
+        
+        li {
+            font-size: 0.9em;
+            margin-bottom: 3px;
+            color: white; /* Make the list items white for better contrast */
+        }
+    }
 }
 
-.submitButton {
-    background-color: $primary-color;
-    width: 100%;
-    padding: 10px;
-    border: 0;
+.submitButton{
+     background-color: $primary-color;
+     width: 100%;
+     padding: 10px;
+     border: 0px;
     border-radius: 4px;
     color: white;
-}
-
-// ====== RESPONSIVE ======
-@media (max-width: 768px) {
-    .panel {
-        padding: 10px;
-    }
-
-    .submitButton {
-        padding: 8px;
-    }
-
-    .disabledWarning {
-        padding: 10px;
-    }
 }

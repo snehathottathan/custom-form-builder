@@ -24,7 +24,7 @@ const Header = ({ exportSchema }) => {
         <button className={styles.btn} onClick={() => alert("Auto-loaded on startup!")}><i className="bi bi-download"></i> Load</button>
         <button className={styles.btn} onClick={handleReset}><i className="bi bi-arrow-repeat"></i> Reset</button>
       </div>
-      <h1>Form Builder</h1>
+      <div className='h1-class'>Form Builder</div>
       <button className={`${styles.btn} ${styles.export}`} onClick={exportSchema}>Export JSON</button>
     </header>
   );

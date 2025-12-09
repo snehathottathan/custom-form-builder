@@ -4,15 +4,14 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     height: calc(100vh - 51px); // 51px is header height
-    gap: 15px;
-
+    
     .configPanel {
         background-color: $dark-bg;
         padding: 20px;
         overflow-y: auto;
         border-right: 1px solid #333;
     }
-
+    
     .previewPanel {
         background-color: #24262d;
         padding: 20px;
@@ -32,7 +31,7 @@
     }
 }
 
-// FieldWrapper (DnD items)
+// FieldWrapper (DnD items) - No changes needed for responsiveness here, styling is fine.
 .fieldWrapper {
     display: flex;
     align-items: center;
@@ -50,18 +49,17 @@
         border-color: $primary-color;
         background-color: #3b4255;
     }
-
+    
     .dragHandle {
         cursor: grab;
         padding-right: 10px;
         color: #888;
     }
-
+    
     .fieldInfo {
         flex-grow: 1;
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
     }
 
     .fieldIcon {
@@ -81,46 +79,38 @@
     }
 }
 
-// ====== RESPONSIVE ======
+/* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
     .builderGrid {
-        grid-template-columns: 1fr; // Single column
-        height: auto;
+        // Switch to a single column layout
+        grid-template-columns: 1fr;
+        height: auto; // Allow scrollable content to define height
+        min-height: calc(100vh - 51px);
+        
+        // Reorder for mobile: Preview first, then Config
+        .previewPanel {
+            order: 1;
+            padding-top: 5px; // Less vertical padding at top
+        }
 
         .configPanel {
+            order: 2;
             border-right: none;
-            border-bottom: 1px solid #333;
-        }
-
-        .previewPanel {
-            margin-top: 15px;
-        }
-    }
-
-    .fieldWrapper {
-        flex-direction: column;
-        align-items: flex-start;
-
-        .dragHandle {
-            margin-bottom: 8px;
-        }
-
-        .removeBtn {
-            align-self: flex-end;
-            margin-top: 8px;
+            border-top: 1px solid #333;
         }
     }
 }
 
 @media (max-width: 600px) {
-    .builderGrid {
-        padding: 10px;
+    .configPanel, .previewPanel {
+        padding: 10px; // Reduce padding on small devices
     }
- .fieldWrapper {
-        flex-direction: row;
-}
-    .configPanel,
-    .previewPanel {
-        padding: 10px;
+    
+    .fieldWrapper {
+        padding: 8px;
+        .fieldInfo {
+            // Allow text to wrap if the label is very long
+            flex-wrap: wrap; 
+        }
     }
 }
