@@ -1,21 +1,37 @@
+/**
+ * @author Sneha T
+ * Sortable field component
+ */
+
 import { useSortable } from "@dnd-kit/sortable";
+
 import { CSS as DndCSS } from "@dnd-kit/utilities";
+
 import React from "react";
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 export default function SortableFieldItem({ field, children }) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: field.id });
+
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: field.id });
 
   const style = {
+
     transform: transform ? DndCSS.Transform.toString(transform) : undefined,
+
     transition,
+
   };
 
   return (
+
     <div ref={setNodeRef} style={style}>
-      {typeof children === "function"
-        ? children({ attributes, listeners })
-        : children}
+
+      {typeof children === "function" ? children({ attributes, listeners }) : children}
+
     </div>
   );
 }
