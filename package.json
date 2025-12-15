@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^2.11.1",
     "bootstrap-icons": "^1.13.1",
     "dnd-kit": "^0.0.2",
-    "next": "16.0.7",
+    "next": "16.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-draggable": "^4.5.0",
